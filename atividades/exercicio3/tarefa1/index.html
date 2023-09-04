@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="botaoDiv">
+        <button id="botaoCarregar">Carregando cervejas...</button>
+    </div>
+    <div id="nomeCervejaDiv" style="display: none;">
+        <h1>Guinness</h1>
+    </div>
+</body>
+
+<script>
+    function carregarDiv() {
+        let botaoDiv = document.getElementById("botaoDiv");
+        let nomeCervejaDiv = document.getElementById("nomeCervejaDiv");
+
+        botaoDiv.style.display = "none"; // Oculta o botão
+        nomeCervejaDiv.style.display = "block"; // Exibe o nome da cerveja
+    }
+
+    let botao = document.getElementById("botaoCarregar");
+    botao.addEventListener("click", carregarDiv);
+</script>
+
+</html>
