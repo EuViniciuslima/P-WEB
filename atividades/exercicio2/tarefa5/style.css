@@ -1,0 +1,26 @@
+p.verso {
+    color: blue;
+}
+
+p.mote {
+    color: red;
+}
+
+/* Estilo para links visitados */
+a:visited {
+    color: purple; 
+}
+
+/* Estilo para links quando o mouse está sobre eles */
+a:hover {
+    text-decoration: underline; 
+    color: green; 
+}
+
+
+.avatar {
+    border-radius: 50%; 
+    width: 100px; 
+    height: 100px; 
+    margin-right: 10px; 
+}
