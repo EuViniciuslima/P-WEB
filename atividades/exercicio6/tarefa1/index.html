@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <button id="botaoCarregar">Carregando cervejas...</button>
+      <table id="cervejasTable">
+         <thead>
+            <tr>
+               <th>Nome</th>
+               <th>Álcool</th>
+            </tr>
+         </thead>
+         <tbody id="cervejasBody">
+         </tbody>
+      </table>
+   </body>
+   <script>
+      let cervejas = [
+         {
+            name: "Guiness",
+            alcohol: "10%"
+         },
+         {
+            name: "Desperados",
+            alcohol: "6%"
+         },
+         {
+            name: "Becks",
+            alcohol: "5%"
+         }
+      ]
+
+      const carregarTabela = cs => {
+         const tableBody = document.getElementById("cervejasBody");
+
+         // Limpa o corpo da tabela
+         tableBody.innerHTML = "";
+
+         cs.forEach(item => {
+            const row = tableBody.insertRow();
+            const nomeCell = row.insertCell(0);
+            const alcoolCell = row.insertCell(1);
+
+            nomeCell.textContent = item.name;
+            alcoolCell.textContent = item.alcohol;
+         });
+      }
+
+      let botao = document.getElementById("botaoCarregar");
+
+      botao.addEventListener("click", () => carregarTabela(cervejas));
+   </script>
+</html>
