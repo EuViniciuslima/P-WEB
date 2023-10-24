@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* Estilos para as marcas div */
+        div.cerveja {
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="meuAmor">
+        <button id="botaoCarregar">Carregando cervejas...</button>
+    </div>
+    <script>
+        let cervejas = ["Guiness", "Desperados", "Becks"];
+
+        function transformar(item) {
+            return `<div class="cerveja">${item}</div>`;
+        }
+
+        function carregarDiv() {
+            let div = document.getElementById("meuAmor");
+            let cervejasHtml = cervejas.map(transformar);
+            div.innerHTML = `${cervejasHtml.join("\n")}`;
+        }
+
+        let botao = document.getElementById("botaoCarregar");
+        botao.addEventListener("click", carregarDiv);
+    </script>
+</body>
+</html>

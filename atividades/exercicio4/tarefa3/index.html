@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* Estilos para a tabela */
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div id="meuAmor">
+        <button id="botaoCarregar">Carregando cervejas...</button>
+    </div>
+    <script>
+        let cervejas = ["Guiness", "Desperados", "Becks"];
+
+        function criarTabela(cervejas) {
+            let tableHtml = `
+                <table>
+                    <tr>
+                        <th>Cervejas</th>
+                    </tr>
+            `;
+
+            for (let cerveja of cervejas) {
+                tableHtml += `
+                    <tr>
+                        <td>${cerveja}</td>
+                    </tr>
+                `;
+            }
+
+            tableHtml += `</table>`;
+            return tableHtml;
+        }
+
+        function carregarTabela() {
+            let div = document.getElementById("meuAmor");
+            div.innerHTML = criarTabela(cervejas);
+        }
+
+        let botao = document.getElementById("botaoCarregar");
+        botao.addEventListener("click", carregarTabela);
+    </script>
+</body>
+</html>
