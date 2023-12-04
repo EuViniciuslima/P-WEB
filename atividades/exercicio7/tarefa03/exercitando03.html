@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <style>
+      body {
+         font-family: Arial, sans-serif;
+         background-color: #f0f0f0;
+         text-align: center;
+      }
+
+      button {
+         padding: 10px 20px;
+         font-size: 16px;
+         background-color: #007BFF;
+         color: #fff;
+         border: none;
+         cursor: pointer;
+         margin-top: 20px;
+      }
+
+      #divUsuarios {
+         text-align: left;
+         max-width: 600px;
+         margin: 0 auto;
+         background-color: #fff;
+         padding: 20px;
+         border-radius: 5px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      #divUsuarios div {
+         margin-bottom: 20px;
+      }
+
+      strong {
+         font-weight: bold;
+      }
+   </style>
+</head>
+
+<body>
+   <div>
+      <button id="btnCarregar">Carregando dados de usuários...</button>
+   </div>
+   <div id="divUsuarios"></div>
+
+   <script>
+      let listaUsuarios = []
+
+      // us é um array de usuários
+      const carregarDivUsuarios = us => {
+         const divUsuarios = document.getElementById("divUsuarios")
+
+         const itensHtml = us.map(({ first_name, last_name, email, gender, phone_number }) =>
+            `<div>
+               <strong>Primeiro Nome:</strong> ${first_name} <br>
+               <strong>Último Nome:</strong> ${last_name} <br>
+               <strong>Email:</strong> ${email} <br>
+               <strong>Gênero:</strong> ${gender} <br>
+               <strong>Telefone:</strong> ${phone_number}
+            </div>`
+         )
+
+         divUsuarios.innerHTML = `${itensHtml.join("<hr>")}`
+      }
+
+      async function carregarUsuarios() {
+         try {
+            let resposta = await fetch("https://random-data-api.com/api/v2/users?size=3")
+            listaUsuarios = await resposta.json()
+            carregarDivUsuarios(listaUsuarios)
+         } catch (erro) {
+            document.getElementById("divUsuarios").innerHTML = "Ops! Algo deu errado..."
+         }
+      }
+
+      let botaoCarregar = document.getElementById("btnCarregar")
+      botaoCarregar.addEventListener("click", () => carregarUsuarios())
+   </script>
+</body>
+
+</html>
